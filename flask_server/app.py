@@ -251,7 +251,7 @@ def create_dream(userName, year, month, day):
         # 세션에 데이터 저장
         session_key = f"{userName}_{year}{month}{day}_myDreram"
         session[session_key] = {
-            "imgPath": f"\static_image\{filename}",
+            "imgPath": f"/static_image/{filename}",
             "dreamCharacter": dreamCharacter.split(", "),
             "time": time,
             "background": background,
