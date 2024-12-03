@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/globals.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script defer src="/js/script.js"></script>
+</head>
+<body>
+    <div class="home">
+        <!-- 네비게이션 바 -->
+        <div class="sidebar" id="sidebar">
+            <div class="menu-button" id="menuButton">
+                <img src="/img/menu.svg" alt="Menu Icon">
+            </div>
+            <div class="menu-items hidden" id="menuItems">
+                <div class="menu-item" id="dreamMenu">
+                    <a href="/createDream" class="nav-link" data-requires-login="true">
+                    <img src="/img/dream-icon.svg" alt="Dream Icon"></a>
+                    <span>Dream</span>
+                </div>
+                <div class="menu-item" id="myMenu">
+                    <a href="/myCalendar/{{ userName }}/2024/12" class="nav-link" data-requires-login="true">
+                        <img src="/img/calendar-icon.svg" alt="My Icon">
+                    </a>
+                    <span>MY</span>
+                </div>
+                <div class="menu-item" id="shareMenu">
+                    <a href="/shareCalendar" class="nav-link" data-requires-login="true">
+                    <img src="/img/share-icon.svg" alt="Share Icon"></a>
+                    <span>Share</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 프로필 메뉴 -->
+        <div class="profile">
+            <img src="/img/icon.svg" alt="Profile Icon" id="profileIcon">
+            <div class="profile-menu hidden" id="profileMenu">
+                <div id="authMenu">
+                    <button id="loginButton">Log In</button>
+                    <button id="signInButton">Sign In</button>
+                </div>
+                <div id="userMenu" class="hidden">
+                    <p id="userNameDisplay"></p>
+                    <button id="logoutButton">Log Out</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 콘텐츠 섹션 -->
+        <div class="content">
+            <div class="question" id="question1">
+                <h1>1. 꿈 속에 누가 나왔나요?</h1>
+                <div id="characterInputs">
+                    <div class="input-group">
+                        <input type="text" dreamCharacter="등장인물 입력">
+                    </div>
+                </div>
+                <button id="addCharacterButton">추가</button>
+            </div>
+            <div class="question hidden" id="question2">
+                <h1>2. 꿈 속의 시간은 언제인가요?</h1>
+                <div class="button-group">
+                    <button class="time-button" data-time="아침">아침</button>
+                    <button class="time-button" data-time="점심">점심</button>
+                    <button class="time-button" data-time="저녁">저녁</button>
+                    <button class="time-button" data-time="새벽">새벽</button>
+                </div>
+            </div>
+            <div class="question hidden" id="question3">
+                <h1>3. 꿈 속에서 어디에 있었나요?</h1>
+                <div class="input-group">
+                  <input type="text" id="background" background="꿈 속의 장소 입력" />
+                </div>
+              </div>
+              <div class="question hidden" id="question4">
+                <h1>4. 꿈 속에서 무엇을 하고 있었나요?</h1>
+                <div class="input-group">
+                  <input type="text" id="act" act="꿈 속의 기억 입력" />
+                </div>
+              </div>
+              <div class="question hidden" id="question5">
+                <h1>5. 꿈 속의 분위기는 어땠나요?</h1>
+                <div class="button-group">
+                    <button class="mood-button" data-mood="공포">공포</button>
+                    <button class="mood-button" data-mood="행복">행복</button>
+                    <button class="mood-button" data-mood="분노">분노</button>
+                    <button class="mood-button" data-mood="사랑">사랑</button>
+                    <button class="mood-button" data-mood="초현실적">초현실적</button>
+                    <button class="mood-button" data-mood="우울">우울</button>
+                </div>
+                    
+              </div>
+              <div class="question hidden" id="question6">
+                <h1>6. 색을 골라주세요.</h1>
+                <div class="color-selection">
+                  <div class="color red" data-color="#FF0000"></div>
+                  <div class="color orange" data-color="#FFA500"></div>
+                  <div class="color yellow" data-color="#FFFF00"></div>
+                  <div class="color green" data-color="#008000"></div>
+                  <div class="color skyblue" data-color="#87CEEB"></div>
+                  <div class="color blue" data-color="#0000FF"></div>
+                  <div class="color purple" data-color="#800080"></div>
+                  <div class="color pink" data-color="#ffc0cb"></div>
+                  <div class="color black" data-color="#000000"></div>
+                </div>
+             </div>
+            </div>
+            </div>
+        </div>
+        
+        
+
+        <!-- 하단 네비게이션 -->
+        <div class="bottom-controls">
+            <button id="prevButton" disabled>이전</button>
+            <button id="nextButton">다음</button>
+            <button type="submit">꿈 생성</button>
+            <div id="bufferingScreen" class="hidden">
+            <h1>꿈을 분석 중입니다... 잠시만 기다려주세요.</h1>
+            <div class="spinner"></div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+

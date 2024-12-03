@@ -1,0 +1,236 @@
+:root {
+    --m3-title-small-font-family: Arial, sans-serif;
+    --m3-title-small-font-weight: 400;
+    --m3-title-small-font-size: 16px;
+    --m3-title-small-letter-spacing: 0.5px;
+    --m3-title-small-line-height: 24px;
+    --system-colors-miscellaneous-floating-tab-text-unselected: #888888;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.screen {
+    width: 800px;
+    height: 500px;
+    position: relative;
+}
+
+.overlap-group {
+    position: relative;
+    height: 590px;
+    background-color: #fffff0;
+    border-radius: 50px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.overlap {
+    position: absolute;
+    width: 634px;
+    height: 119px;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.text-wrapper {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.text-wrapper input {
+    width: 100%;
+    padding: 10px;
+    font-family: var(--m3-title-small-font-family);
+    font-size: var(--m3-title-small-font-size);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+.icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.icon button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.img {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.img button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+}
+
+.result {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.upload-button {
+    position: absolute; /* 위치를 절대값으로 지정 */
+    bottom: 5px; /* 이미지 박스의 하단 맞춤 */
+    right: -60px; /* 이미지 박스 바깥 오른쪽으로 50px */
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.result-content {
+    display: flex;
+    flex-direction: column; /* 세로 방향으로 정렬 */
+    align-items: center; /* 수평 가운데 정렬 */
+    justify-content: center; /* 수직 가운데 정렬 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    width: 100%; /* 부모 너비에 맞추기 */
+    padding: 20px;
+}
+
+.image-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 날짜 스타일 */
+.date-overlay {
+    position: absolute;
+    top: -50px; /* 그림 컨테이너 위쪽에서 더 여유롭게 위치 */
+    left: 10px; /* 왼쪽에서 약간의 여백 추가 */
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    background: white;
+    padding: 8px 12px; /* 패딩 확대 */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 버튼 스타일 */
+.button-wrapper {
+    position: absolute;
+    top: -50px; /* 그림 컨테이너 위쪽에서 더 여유롭게 위치 */
+    right: 10px; /* 오른쪽에서 약간의 여백 추가 */
+    display: flex;
+    flex-direction: row; /* 버튼을 가로로 배치 */
+    gap: 20px; /* 버튼 간 간격 더 확대 */
+}
+
+.close-button,
+.download-button,
+.upload-button {
+    background: rgba(255, 255, 255); /* 버튼 배경 */
+    border: none;
+    cursor: pointer;
+    width: 45px; /* 버튼 크기 약간 확대 */
+    height: 45px;
+    border-radius: 50%; /* 원형 버튼 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.close-button:hover,
+.download-button:hover,
+.upload-button:hover {
+    background: rgba(0, 0, 0, 0.8); /* 호버 시 어두운 배경 */
+    color: white;
+}
+
+.image-box {
+    position: relative; /* 버튼 기준 설정을 위해 */
+    width: 600px;
+    height: 400px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden; /* 이미지가 박스 밖으로 넘치지 않게 설정 */
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 이미지 비율 유지 */
+    border-radius: 10px;
+}
+
+
+
+
+
+.details {
+    max-width: 600px; /* 텍스트 박스의 최대 너비 */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.details h2 {
+    margin-bottom: 10px;
+}
+
+.details ul {
+    list-style: none; /* 불릿 제거 */
+    padding: 0;
+    margin: 0;
+}
+
+.details li {
+    margin-bottom: 8px; /* 항목 간 여백 */
+}
+

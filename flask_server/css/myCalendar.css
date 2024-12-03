@@ -1,0 +1,167 @@
+/* 전체 레이아웃 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+}
+
+/* 캘린더 전체 컨테이너 */
+.calendar-wrapper {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* 네비게이션 바 */
+.sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80px;
+    height: 100vh;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+/* 캘린더 헤더 */
+.calendar-header {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #eaeaea;
+}
+
+/* 캘린더 테이블 */
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    table-layout: fixed;
+}
+
+.calendar-table thead th {
+    padding: 10px;
+    font-weight: bold;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 14px;
+}
+
+.calendar-table thead .sunday {
+    color: red;
+}
+
+.calendar-table tbody td {
+    padding: 10px;
+    height: 80px;
+    position: relative;
+    vertical-align: top;
+}
+
+/* 날짜 텍스트 */
+.calendar-table tbody td span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* 색상 원 */
+.calendar-table tbody td .circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-color: transparent; /* 초기 상태는 투명 */
+    transition: background-color 0.3s ease;
+}
+
+/* 색상 원의 null 상태 */
+.calendar-table tbody td .circle[data-color="null"] {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+/* 비어 있는 셀 */
+.calendar-table tbody td.empty {
+    background-color: #f9f9f9;
+    pointer-events: none;
+}
+
+/* 프로필 아이콘 */
+.profile {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.profile-menu.hidden {
+    display: none;
+}
+
+.profile-menu button {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.profile-menu button:hover {
+    background-color: #e0e0e0;
+}
+
+/* 선택된 날짜 효과 */
+.calendar-table tbody td.selected {
+    background-color: #f0f8ff;
+    border: 1px solid #007bff;
+}
+
+/* 활성 날짜 효과 */
+.calendar-table tbody td.active .circle {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    cursor: pointer;
+}
+
+/* 비활성 날짜 */
+.calendar-table tbody td .circle[data-color="null"] {
+    background-color: #e9ecef;
+    pointer-events: none;
+}
+
+.calendar-table tbody td .circle:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}

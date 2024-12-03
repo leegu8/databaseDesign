@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Draw Result</title>
+    <link rel="stylesheet" href="/css/globals.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/result.css">
+    <script defer src="/js/script.js"></script>
+    
+</head>
+<body>
+    <div class="home">
+        <!-- 네비게이션 바 -->
+        <div class="sidebar" id="sidebar">
+            <div class="menu-button" id="menuButton">
+                <img src="/img/menu.svg" alt="Menu Icon">
+            </div>
+            <div class="menu-items hidden" id="menuItems">
+                <div class="menu-item" id="dreamMenu">
+                    <a href="/createDream" class="nav-link" data-requires-login="true">
+                    <img src="/img/dream-icon.svg" alt="Dream Icon"></a>
+                    <span>Dream</span>
+                </div>
+                <div class="menu-item" id="myMenu">
+                    <a href="/myCalendar/{{ userName }}/2024/12" class="nav-link" data-requires-login="true">
+                        <img src="/img/calendar-icon.svg" alt="My Icon">
+                    </a>
+                    <span>MY</span>
+                </div>
+                <div class="menu-item" id="shareMenu">
+                    <a href="/shareCalendar" class="nav-link" data-requires-login="true">
+                    <img src="/img/share-icon.svg" alt="Share Icon"></a>
+                    <span>Share</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 프로필 메뉴 -->
+        <div class="profile">
+            <img src="/img/icon.svg" alt="Profile Icon" id="profileIcon">
+            <div class="profile-menu hidden" id="profileMenu">
+                <div id="authMenu">
+                    <button id="loginButton">Log In</button>
+                    <button id="signInButton">Sign In</button>
+                </div>
+                <div id="userMenu" class="hidden">
+                    <p id="userNameDisplay"></p>
+                    <button id="logoutButton">Log Out</button>
+                </div>
+            </div>
+        </div>        
+
+            <!-- 결과 이미지와 설명 -->
+            <div class="result-content">
+                <div class="image-container">
+                    <!-- 날짜와 버튼 -->
+                    <div class="date-overlay" id="dateOverlay">
+                        {{ date }}
+                    </div>
+                    <!-- 이미지 박스 -->
+                    <div class="image-box">
+                        <img id="dreamImage" src="{{ imgPath }}" alt="Dream Image">
+                    </div>
+
+                    <div class="button-wrapper">
+                        <button id="closeButton" class="close-button">
+                            <img src="/img/x-icon.svg" alt="Close">
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 꿈 정보 -->
+                <div class="details">
+                    <h2>꿈 정보</h2>
+                    <ul>
+                        <li><strong>작성자:</strong> {{ userName }}</li>
+                        <li><strong>등장인물:</strong> {{ ", ".join(dreamCharacter) }}</li>
+                        <li><strong>시간:</strong> {{ time }}</li>
+                        <li><strong>장소:</strong> {{ background }}</li>
+                        <li><strong>기억:</strong> {{ act }}</li>
+                        <li><strong>분위기:</strong> {{ mood }}</li>
+                        <li><strong>색감:</strong> {{ color }}</li>
+                    </ul>
+                </div>
+            </div> 
+    </div>
+
+    <script>
+
+
+        // 닫기 버튼 이벤트
+        const closeButton = document.getElementById("closeButton");
+        closeButton.addEventListener("click", async () => {
+            try {
+                // 서버로 GET 요청 전송
+                const response = await fetch('/result/cancel', {
+                    method: 'POST',
+                });
+
+                // 성공적으로 처리되면 리다이렉트
+                if (response.ok) {
+                    window.location.href = '/'; // 홈으로 이동
+                    alert("취소되었습니다.");
+                } else {
+                    // 에러 메시지 출력
+                    console.error('서버 요청 실패:', response.statusText);
+                    alert('오류가 발생했습니다. 다시 시도해주세요.');
+                }
+            } catch (error) {
+                // 네트워크 오류 처리
+                console.error('네트워크 오류:', error);
+                alert('네트워크 오류가 발생했습니다.');
+            }
+        });
+    </script>
+</body>
+</html>
